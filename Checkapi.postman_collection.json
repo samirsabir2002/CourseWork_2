@@ -1,0 +1,91 @@
+{
+	"info": {
+		"_postman_id": "27b4b08b-4684-4875-af32-c557bfdd31e9",
+		"name": "Checkapi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26940487"
+	},
+	"item": [
+		{
+			"name": "Post Api",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"checkoutName\":\"Hassan\",\r\n    \"checkoutPhone\":\"0432\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/collection/order",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"collection",
+						"order"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Api",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/lesson",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"lesson"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put api",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/collection/lesson/63cf6d91525e30767689774b",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"collection",
+						"lesson",
+						"63cf6d91525e30767689774b"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

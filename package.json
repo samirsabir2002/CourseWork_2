@@ -1,0 +1,27 @@
+{
+    "name": "cars-cw2-individual-main",
+    "version": "1.0.0",
+    "description": "",
+    "main": "nodemon server.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "nodemon server.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "cors": "^2.8.5",
+        "dotenv": "^16.4.5",
+        "express": "^4.19.2",
+        "mongodb": "3.6",
+        "node": "^17.7.2",
+        "nodemon": "^2.0.15",
+        "properties-reader": "^2.3.0",
+        "save": "^2.5.0"
+    },
+    "devDependencies": {
+        "@types/mongodb": "^4.0.7",
+        "typescript": "^5.4.5"
+    }
+}
