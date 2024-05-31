@@ -17,8 +17,7 @@ app.use((req, res, next) => {
   next();
 });
 
-const connectionString =
-  "mongodb+srv://hassankhan:3Hfkhan800774256@cluster0.txjv8ql.mongodb.net/";
+const connectionString = "mongodb+srv://hassankhan:3Hfkhan800774256@cluster0.txjv8ql.mongodb.net/CW2?retryWrites=true&w=majority";
 const databaseName = "CW2";
 
 MongoClient.connect(connectionString, (err, client) => {
