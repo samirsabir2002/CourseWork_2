@@ -53,7 +53,7 @@ client.connect(err => {
   });
 
   // Add order and update lesson spaces
-  app.post("/collection/order/confrimorder", async (req, , res) => {
+  app.post("/collection/order/confrimorder", async (req, res) => {
     const order = req.body;
 
     try {
