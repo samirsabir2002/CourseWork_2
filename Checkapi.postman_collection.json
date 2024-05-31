@@ -21,7 +21,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/collection/order",
+					"raw": "https://coursework-2-3emb.onrender.com/collection/order",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -53,7 +53,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/lesson",
+					"raw": "https://coursework-2-3emb.onrender.com/lesson",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -72,7 +72,7 @@
 				"method": "PUT",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/collection/lesson/63cf6d91525e30767689774b",
+					"raw": "https://coursework-2-3emb.onrender.com/collection/lesson/63cf6d91525e30767689774b",
 					"protocol": "http",
 					"host": [
 						"localhost"
