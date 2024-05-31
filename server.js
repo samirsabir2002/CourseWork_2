@@ -163,8 +163,6 @@ MongoClient.connect(connectionString, (err, client) => {
       });
     });
 
-   
-
     app.use(function (req, res) {
       res.status(404);
       res.send("File not found");
