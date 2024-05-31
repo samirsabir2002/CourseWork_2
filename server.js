@@ -9,6 +9,11 @@ const app = express();
 
 app.use(express.json());
 app.use(cors());
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Orign", "*"); // Allow cross-origin requests
+  res.header("Access-Control-Allow-Headers", "*"); // Allow all headers
+  next();
+});
 
 // logger middleware
 app.use((req, res, next) => {
@@ -17,7 +22,8 @@ app.use((req, res, next) => {
   next();
 });
 
-const connectionString = "mongodb+srv://hassankhan:3Hfkhan800774256@cluster0.txjv8ql.mongodb.net/";
+const connectionString =
+  "mongodb+srv://hassankhan:3Hfkhan800774256@cluster0.txjv8ql.mongodb.net/";
 
 const databaseName = "CW2";
 
