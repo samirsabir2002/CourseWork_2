@@ -72,13 +72,9 @@ MongoClient.connect(connectionString, (err, client) => {
           { safe: true, multi: false },
           (e, result) => {
             if (e) return next(e);
-    
-            // Check if result object exists and has the property 'n'
-            if (result && result.result && result.result.n === 1) {
-              res.send({ msg: "Success" });
-            } else {
-              res.send({ msg: "error" });
-            }
+            res.send(
+              result.result.n === 1 ? { msg: "Success" } : { msg: "error" }
+            );
           }
         );
       } catch (ex) {
