@@ -163,6 +163,24 @@ MongoClient.connect(connectionString, (err, client) => {
       });
     });
 
+    // New route to update lesson data
+    app.put("/lesson/:id", (req, res, next) => {
+      const lessonId = req.params.id;
+      const updatedLessonData = req.body;
+
+      Lesson.updateOne(
+        { _id: ObjectId(lessonId) },
+        { $set: updatedLessonData },
+        (err, result) => {
+          if (err) {
+            res.status(500).json({ error: "Failed to update lesson data" });
+          } else {
+            res.json({ message: "Lesson data updated successfully" });
+          }
+        }
+      );
+    });
+
     app.use(function (req, res) {
       res.status(404);
       res.send("File not found");
