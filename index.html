@@ -312,7 +312,7 @@
           
             methods: {
               filteredList() {
-                fetch(`http://localhost:3000/lesson/search?key_word=${this.search}`)
+                fetch(`https://coursework-2-3emb.onrender.com/lesson/search?key_word=${this.search}`)
                   .then(response => response.json())
                   .then(data => {
                     console.log('Response data:', data);
@@ -356,7 +356,7 @@
                   cartProduct: this.cart,
                 };
               
-                fetch("http://localhost:3000/collection/order/confrimorder", {
+                fetch("https://coursework-2-3emb.onrender.com/collection/order/confrimorder", {
                   method: "POST",
                   headers: {
                     "Content-Type": "application/json",
@@ -397,7 +397,7 @@
           
               updateLessonSpaces(cart) {
                 const updatePromises = cart.map(lessonInCart => {
-                  return fetch(`http://localhost:3000/collection/lesson/${lessonInCart._id}`, {
+                  return fetch(`https://coursework-2-3emb.onrender.com/collection/lesson/${lessonInCart._id}`, {
                     method: "PUT",
                     headers: {
                       "Content-Type": "application/json",
@@ -415,7 +415,7 @@
                 
                  
                 fetchLessons() {
-                    fetch("http://localhost:3000/lesson")
+                    fetch("https://coursework-2-3emb.onrender.com/lesson")
                         .then(response => response.json())
                         .then(data => {
                             this.lessons = data;
