@@ -64,16 +64,21 @@ MongoClient.connect(connectionString, (err, client) => {
     app.put("/collection/:collectionName/:id", (req, res, next) => {
       try {
         const objectID = require("mongodb").ObjectID;
-
-        req.connection.updateOne(
+    
+        // Assuming your database connection is stored in req.app.locals.db
+        req.app.locals.db.collection(req.params.collectionName).updateOne(
           { _id: new objectID(req.params.id) },
           { $inc: { space: -1 * 1 } }, // Decrementing space by 1
           { safe: true, multi: false },
           (e, result) => {
             if (e) return next(e);
-            res.send(
-              result.result.n === 1 ? { msg: "Success" } : { msg: "error" }
-            );
+    
+            // Check if result object exists and has the property 'n'
+            if (result && result.result && result.result.n === 1) {
+              res.send({ msg: "Success" });
+            } else {
+              res.send({ msg: "error" });
+            }
           }
         );
       } catch (ex) {
@@ -81,6 +86,8 @@ MongoClient.connect(connectionString, (err, client) => {
         next(ex); // Pass error to the error handler
       }
     });
+    
+    
 
     // Search route with regular expression and case-insensitive matching
     app.get("/collection/lesson/search", (req, res, next) => {
