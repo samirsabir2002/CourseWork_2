@@ -61,44 +61,26 @@ MongoClient.connect(connectionString, (err, client) => {
       });
     });
 
-    app.post("/collection/order/confrimorder", async (req, res) => {
-  const order = req.body;
+    app.put("/collection/:collectionName/:id", (req, res, next) => {
+      try {
+        const objectID = require("mongodb").ObjectID;
 
-  try {
-    // Insert the order into MongoDB
-    const result = await Order.insertOne(order);
-
-    // Update lesson spaces
-    const lessonsToUpdate = order.cartProduct.map((lesson) => ({
-      updateOne: {
-        filter: { _id: ObjectId(lesson.id) },
-        update: { $inc: { space: -1 } }
+        req.connection.updateOne(
+          { _id: new objectID(req.params.id) },
+          { $inc: { space: -1 * 1 } }, // Decrementing space by 1
+          { safe: true, multi: false },
+          (e, result) => {
+            if (e) return next(e);
+            res.send(
+              result.result.n === 1 ? { msg: "Success" } : { msg: "error" }
+            );
+          }
+        );
+      } catch (ex) {
+        console.log("🚀 ~ app.put ~ ex:", ex);
+        next(ex); // Pass error to the error handler
       }
-    }));
-    const updateResult = await Lesson.bulkWrite(lessonsToUpdate);
-
-    res.json({
-      message: "Order inserted successfully",
-      orderId: result.insertedId,
-      lessonsUpdated: updateResult.modifiedCount
     });
-  } catch (err) {
-    console.error("Error processing order:", err);
-
-    let errorMessage = "Error processing order";
-    if (err.code && err.code === 11000) {
-      // Example: Duplicate key error
-      errorMessage = "Duplicate order detected";
-    } else if (err.name === "MongoServerError" && err.code === 121) {
-      // Example: Validation error
-      errorMessage = "Invalid order data";
-    }
-    res.status(500).send(errorMessage);
-  }
-});
-
-    
-    
 
     // Search route with regular expression and case-insensitive matching
     app.get("/collection/lesson/search", (req, res, next) => {
