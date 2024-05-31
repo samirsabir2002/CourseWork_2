@@ -26,7 +26,7 @@ client.connect(err => {
     return;
   }
   
-  const db = client.db(CW2);
+  const db = client.db("CW2");
 
   console.log("Database connected");
 
